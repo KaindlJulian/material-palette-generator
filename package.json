@@ -1,0 +1,24 @@
+{
+  "name": "mtg",
+  "version": "1.0.0",
+  "description": "CLI utility to generate a color palette by material design standards",
+  "main": "app.js",
+  "preferGlobal": "true",
+  "bin": {
+    "mtg": "./app.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "material-palette-generator"
+  },
+  "author": "Julian Kaindl",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "color": "^3.0.0",
+    "commander": "^2.16.0"
+  }
+}
