@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const program = require('commander')
-const fileTypes = require('./filetypes.json').all
+const config = require('./config.json')
 const Generator = require('./generator');
 
 /**
@@ -40,7 +40,7 @@ program.parse(process.argv)
 
 if (program.rawArgs.length === 2) program.help();
 
-if ( fileTypes.includes(program.type) ) {
+if ( config.outputOptions.includes(program.type) ) {
 
     console.log(validateHexColor(program.colors))
     console.log(`Material Color Palette(s) for ${program.colors}`)
