@@ -1,5 +1,5 @@
 var Color = require('color')
-const chalk = require('chalk') 
+const contrasts = require('./config').generator.contrasts
 
 const MAIN_PALETTE_SIZE = 10
 
@@ -28,37 +28,43 @@ class Generator {
 
     async generate() {
         if (this._color) {
-            console.log(`generating palette for ${this._color}`)
+            console.log(`generating material palette for ${this._color}`)
             const mainPalette = []
             const accentPalette = []
-    
+            
             const mainColor = this.color
 
             for (let index = 0; index < MAIN_PALETTE_SIZE; index++) {
+                console.log(contrasts[index])
                 if (index < 5) {
                     mainPalette.push(
-                        mainColor.lighten((5 - (index + 1)) * 2 / 5).hex()
+                        Color('white').mix(
+                            mainColor, 
+                            contrasts[index]).hex()
                     )
                 } else if (index === 5) {
                     mainPalette.push(mainColor.hex())
-                } else {
+                    this.contrast = 0
+                } else if (index >= 6) {
                     mainPalette.push(
-                        mainColor.darken((index - 1) / 15).hex()
+                        Color('black').mix(
+                            mainColor, 
+                            contrasts[index]).hex()
                     )
                 }
             }
 
             accentPalette.push(
-                Color(mainPalette[1]).saturate(1.80).rotate(33) .hex()
+                Color(mainPalette[1]).saturate(1).lighten(0.1).rotate(3).hex()
             )
             accentPalette.push(
-                Color(mainPalette[2]).saturate(1.85).rotate(33).hex()
+                Color(mainPalette[2]).saturate(1).lighten(0.2).rotate(3).hex()
             )
             accentPalette.push(
-                Color(mainPalette[4]).saturate(1.90).rotate(33).hex()
+                Color(mainPalette[4]).saturate(1).lighten(0.4).rotate(3).hex()
             )
             accentPalette.push(
-                Color(mainPalette[7]).saturate(1.95).rotate(33).hex()
+                Color(mainPalette[7]).saturate(1).lighten(0.7).rotate(3).hex()
             )
 
             mainPalette.forEach( (color) => {
@@ -72,6 +78,7 @@ class Generator {
             return mainPalette.concat(accentPalette)
         }
     }
+
 
 }
 module.exports = Generator;
