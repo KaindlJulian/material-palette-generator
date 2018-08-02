@@ -36,6 +36,9 @@ program
 program.parse(process.argv)
 
 if (program.color) {
+    if (!validateHexColor(program.color)) {
+        program.help()
+    }
     console.log(`Material Color Palette(s) for ${program.color}`)
     const generator = new PaletteGenerator(program.color)
     const formatter = new PaletteFormatter()
@@ -50,7 +53,7 @@ if (program.color) {
                 console.log(val.name , '\t', val.color.hex())
             })
         }
-        
+
         if (config.outputOptions.includes(program.format)) { 
             const formatted = formatter.addNames()
 
@@ -66,9 +69,11 @@ if (program.color) {
 }
 
 /**
- * validates a object to be a hexa color string
+ * validates a object to be a hexa color string and adds a hash if it is missing
  * @param {*} color validated object
  */
 function validateHexColor(color) {
+    if (!color.startsWith('#')) 
+        program.color = '#' + program.color
     return color.match(/^#(?:[0-9a-f]{3}){1,2}$/i)
 }
