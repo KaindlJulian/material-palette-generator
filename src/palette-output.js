@@ -54,7 +54,7 @@ class Output {
                     break;
             } 
             if (this.open) {
-                exec(`${this.getCommandLine()} ${this.path + this.filename}`)
+                exec(`${this.getCommandLine()} ${this.getFilePath()}`)
             }
         }
     } 
@@ -65,7 +65,7 @@ class Output {
     }
 
     async material2Format(palette) {
-        let file = `$generated-palette: (\n`
+        let file = `$palette: (\n`
         palette.forEach((paletteItem) => {
             file += `\t${paletteItem.name} : ${paletteItem.color.hex()},\n`
         })
@@ -76,7 +76,7 @@ class Output {
         file += '\t)\n);\n'
         fs.writeFile(`${this.path}/${this.filename}`, file, (err) => {
             if (err) throw err
-            console.log(`Created file: ${this.path + this.filename}`)
+            console.log(`Created file: ${this.getFilePath()}`)
         })
     }
 
@@ -87,6 +87,10 @@ class Output {
             case 'win64' : return 'start';
             default : return 'xdg-open';
         }
+    }
+
+    getFilePath() {
+        return `${this.path}${this.path.endsWith('/') ? '' : '/'}${this.filename}`
     }
 }
 module.exports = Output

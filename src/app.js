@@ -50,7 +50,7 @@ if (program.color) {
                 console.log(val.name , '\t', val.color.hex())
             })
         }
-        console.log(program)
+        
         if (config.outputOptions.includes(program.format)) { 
             const formatted = formatter.addNames()
 
