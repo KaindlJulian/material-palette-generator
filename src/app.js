@@ -26,7 +26,11 @@ program
         'opens the generated file with your associated application'
     )
     .option(
-        '-d, --dir [dir]',
+        '-n, --file-name [filename]',
+        'name of the file (standart is material-palette.scss)'
+    )
+    .option(
+        '-d, --directory [directory]',
         'the absolute or relative path where the file will be created'
     )
 program.parse(process.argv)
@@ -46,12 +50,16 @@ if (program.color) {
                 console.log(val.name , '\t', val.color.hex())
             })
         }
-
+        console.log(program)
         if (config.outputOptions.includes(program.format)) { 
-            console.log(program)
             const formatted = formatter.addNames()
+
             output.palette = formatted
-            output.path = program.dir ? program.dir : './'
+            output.path = program.directory ? program.directory : '.'
+
+            if (program.open) { output.open = true }
+            if (program.fileName) { output.filename = program.fileName }
+
             output.outputTo(program.format)
         }
     })

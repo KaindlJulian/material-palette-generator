@@ -4,6 +4,11 @@ const validOptions = require('../config/config.json').outputOptions
 
 class Output {
 
+    constructor () {
+        this._open = false
+        this._filename = 'material-palette.scss'
+    }
+
     set option (value) {
         if (validOptions.includes(value))
             this._option = value
@@ -26,13 +31,30 @@ class Output {
         return this._path
     }
 
+    set open (value) {
+        this._open = value
+    }
+    get open () {
+        return this._open
+    }
+
+    set filename (value) {
+        this._filename = value
+    }
+    get filename () {
+        return this._filename
+    }
+
     output() {
         if (this.option) {
             switch (this.option) {
                 case validOptions[0]:
                     this.material2Format(this.palette)
-                    exec(`${this.getCommandLine()} ${this.path}/material2-palette.scss`)
+
                     break;
+            } 
+            if (this.open) {
+                exec(`${this.getCommandLine()} ${this.path + this.filename}`)
             }
         }
     } 
@@ -52,9 +74,9 @@ class Output {
             file += `\t\t${paletteItem.name} : ${paletteItem.color.isLight() ? '#000000' : '#ffffff'},\n`
         })
         file += '\t)\n);\n'
-        fs.writeFile(`${this.path}/material2-palette.scss`, file, (err) => {
+        fs.writeFile(`${this.path}/${this.filename}`, file, (err) => {
             if (err) throw err
-            console.log('created')
+            console.log(`Created file: ${this.path + this.filename}`)
         })
     }
 
