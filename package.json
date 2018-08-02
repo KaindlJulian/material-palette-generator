@@ -1,6 +1,6 @@
 {
   "name": "mtg",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "CLI utility to generate a color palette by material design standards",
   "main": "src/app.js",
   "preferGlobal": "true",

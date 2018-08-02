@@ -1,24 +1,22 @@
-
-
 class Formatter {
 
-    constructor(palettes) {
-        this.palettes = palettes
+    constructor(palette) {
+        if (palette)
+            this.palette = palette
     }
 
-    set palettes (palettesArray) {
+    set palette (palettesArray) {
         if (Array.isArray(palettesArray)) 
-            this._palettes = palettesArray
+            this._palette = palettesArray
         else
-            throw `${palettesArray} is not an Array`
+            throw `${paletteArray} is not an Array`
     }
-    get palettes () {
-        return this._palettes
+    get palette () {
+        return this._palette
     }
-
 
     addNames(palettePos) {
-        const palette = this.palettes[0] 
+        const palette = this.palette
         const indexedPalette = []
 
         if (palettePos)
@@ -41,7 +39,5 @@ class Formatter {
         })
         return indexedPalette  
     }
-
-    
 }
-module.exports = Formatter;
+module.exports = Formatter

@@ -1,8 +1,9 @@
 {
     "outputOptions": [
-        "scss",
-        "json",
-        "txt"
+        "material2",
+        "material",
+        "material-ui",
+        "android"
     ],
     "generator": {
         "contrasts": [
@@ -18,6 +19,4 @@
             0.35
         ]
     }
-
-
 }

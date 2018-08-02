@@ -7,7 +7,6 @@ class Generator {
 
     constructor(color) {
         this.color = color
-        console.log(`New generator of ${this._color.hex()}`)
     }
 
     set color (color) {
@@ -28,10 +27,8 @@ class Generator {
 
     async generate() {
         if (this._color) {
-            console.log(`Generating material palette for ${this._color.hex()}`)
             const mainPalette = []
-            const accentPalette = []
-            
+            const accentPalette = []          
             const mainColor = this.color
 
             for (let index = 0; index < MAIN_PALETTE_SIZE; index++) {
@@ -53,23 +50,22 @@ class Generator {
                 }
             }
 
+            const accentColor = mainColor.saturate(1).rotate(3)
             accentPalette.push(
-                Color(mainPalette[1]).saturate(1).lighten(0.1).rotate(3)
+                accentColor.lighten(0.7)
             )
             accentPalette.push(
-                Color(mainPalette[2]).saturate(1).lighten(0.2).rotate(3)
+                accentColor.lighten(0.5)
             )
             accentPalette.push(
-                Color(mainPalette[4]).saturate(1).lighten(0.4).rotate(3)
+                accentColor.lighten(0.3)
             )
             accentPalette.push(
-                Color(mainPalette[7]).saturate(1).lighten(0.7).rotate(3)
+                accentColor.lighten(0.1)
             )
             
             return mainPalette.concat(accentPalette)
         }
     }
-
-
 }
-module.exports = Generator;
+module.exports = Generator
