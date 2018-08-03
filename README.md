@@ -1,10 +1,6 @@
 # material-palette-generator (mpg)
 
-Node.js utility cli to generate material color palettes. Following the material guidelines at [material.io](https://material.io/design/color/the-color-system.html#)
-
-## Thanks to 
-- Constantin for his stackoverflow answer which you can find [here](https://stackoverflow.com/questions/28503998/how-to-create-custom-palette-with-custom-color-for-material-design-app#36229022)
-
+Node.js cli utility to generate material color palettes. Following the material guidelines at [material.io](https://material.io/design/color/the-color-system.html#)
 
 ## Installing
 with npm:
@@ -26,14 +22,18 @@ with npm:
 ## Examples
 
 #### Standart Output
-`mpg -c 00ff00` 
-![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/standard.PNG?token=AV5IniiMNJrjTdMiJbVpq7uXmexr--a6ks5bbdh4wA%3D%3D "mpg -c 00ff00")
+`mpg -c #00ff00` 
+
+![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/standard.PNG?token=AV5Inuznb01OpAuE7epw8nhsEh2ijZxRks5bbdgRwA%3D%3D "mpg -c 00ff00")
 
 #### Output with names
-`mpg -c 0000ff --print` 
+`mpg -c #0000ff --print` 
+
 ![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/print.PNG?token=AV5Injthp1nQRl-RfRnZ1f4rouTnlVIzks5bbdf_wA%3D%3D "mpg -c 0000ff --print")
 
 #### Output to file
-`mpg -c ff0000 --format material2 -d ./ --file-name example.scss` 
+`mpg -c #ff0000 --format material2 -d ./ --file-name example.scss` 
+
 ![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/create_file.PNG?token=AV5InlbP40217M7uw4_U0vqbpg8WkfP7ks5bbdfrwA%3D%3D "mpg -c 0000ff --print")
+
 [example.scss](https://github.com/KaindlJulian/material-palette-generator/blob/master/examples/example.scss)
