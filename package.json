@@ -1,12 +1,10 @@
 {
   "name": "mpg",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "CLI utility to generate a color palette by material design standards",
-  "main": "src/app.js",
-  "preferGlobal": "true",
-  "bin": {
-    "mpg": "./app.js"
-  },
+  "main": "mpg.js",
+  "preferGlobal": true,
+  "bin": "./mpg.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +15,7 @@
   "author": "Julian Kaindl",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.1",
     "color": "^3.0.0",
     "commander": "^2.16.0"
   }

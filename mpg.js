@@ -1,13 +1,15 @@
 #!/usr/bin/env node
+'use strict'
 const program = require('commander')
-const config = require('../config/config.json')
+const chalk = require('chalk')
+const config = require('./config/config.json')
 
-const PaletteGenerator = require('./palette-generate');
-const PaletteFormatter = require('./palette-format');
-const PaletteOutput = require('./palette-output');
+const PaletteGenerator = require('./src/palette-generate');
+const PaletteFormatter = require('./src/palette-format');
+const PaletteOutput = require('./src/palette-output');
 
 program
-    .version('0.0.1')
+    .version('1.0.0')
     .description('generates a color palette by material design standards')
     .option(
         '-c, --color [color]', 
@@ -36,21 +38,33 @@ program
 program.parse(process.argv)
 
 if (program.color) {
-    if (!validateHexColor(program.color)) {
+    if (!validateInputColor()) {
         program.help()
     }
-    console.log(`Material Color Palette(s) for ${program.color}`)
+    console.log(`Material Color Palette for ${chalk.hex(program.color)(program.color)}`)
     const generator = new PaletteGenerator(program.color)
     const formatter = new PaletteFormatter()
     const output = new PaletteOutput()
     
     generator.generate().then((palette) => {
         formatter.palette = palette
-    
+        console.log()
         if (program.print) {
             const paletteRaw = formatter.addNames()
             paletteRaw.forEach( (val) => {
-                console.log(val.name , '\t', val.color.hex())
+                console.log(val.name, '\t:', 
+                    chalk.bgHex(val.color.hex())
+                    (chalk.keyword(val.color.isLight() ? 'black' : 'white')
+                    (val.color.hex()))
+                )
+            })
+        } else {
+            palette.forEach((color) => {
+                console.log(
+                    chalk.bgHex(color.hex())
+                    (chalk.keyword(color.isLight() ? 'black' : 'white')
+                    (color.hex()))
+                )
             })
         }
 
@@ -72,8 +86,8 @@ if (program.color) {
  * validates a object to be a hexa color string and adds a hash if it is missing
  * @param {*} color validated object
  */
-function validateHexColor(color) {
-    if (!color.startsWith('#')) 
+function validateInputColor() {
+    if (!program.color.startsWith('#')) 
         program.color = '#' + program.color
-    return color.match(/^#(?:[0-9a-f]{3}){1,2}$/i)
+    return program.color.match(/^#(?:[0-9a-f]{3}){1,2}$/i)
 }

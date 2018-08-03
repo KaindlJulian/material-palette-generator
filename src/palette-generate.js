@@ -12,7 +12,7 @@ class Generator {
     set color (color) {
         try {
             this._color = Color(color).rgb()
-        } catch {
+        } catch (err) {
             console.log(`ERROR: "${color}" is not a valid color code!`)
         }
     }
