@@ -1,9 +1,19 @@
 {
-  "name": "mpg",
+  "name": "material-palette-generator",
   "version": "1.0.0",
-  "description": "CLI utility to generate a color palette by material design standards",
+  "description": "Nodejs cli utility to generate a color palette by material design standards",
   "main": "mpg.js",
   "preferGlobal": true,
+  "keywords": [
+    "nodejs",
+    "commander",
+    "cli",
+    "color",
+    "palette",
+    "material-design", 
+    "material",
+    "chalk"
+  ],
   "bin": "./mpg.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +24,7 @@
   },
   "author": "Julian Kaindl",
   "license": "MIT",
+  "homepage": "https://github.com/KaindlJulian/material-palette-generator",
   "dependencies": {
     "chalk": "^2.4.1",
     "color": "^3.0.0",

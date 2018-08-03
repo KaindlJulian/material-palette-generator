@@ -27,13 +27,13 @@ with npm:
 
 #### Standart Output
 `mpg -c 00ff00` 
-![alt text](./examples/images/standard.PNG "mpg -c 00ff00")
+![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/standard.PNG?token=AV5IniiMNJrjTdMiJbVpq7uXmexr--a6ks5bbdh4wA%3D%3D "mpg -c 00ff00")
 
 #### Output with names
 `mpg -c 0000ff --print` 
-![alt text](./examples/images/print.PNG "mpg -c 0000ff --print")
+![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/print.PNG?token=AV5Injthp1nQRl-RfRnZ1f4rouTnlVIzks5bbdf_wA%3D%3D "mpg -c 0000ff --print")
 
 #### Output to file
 `mpg -c ff0000 --format material2 -d ./ --file-name example.scss` 
-![alt text](./examples/images/create_file.PNG "mpg -c 0000ff --print")
+![alt text](https://raw.githubusercontent.com/KaindlJulian/material-palette-generator/master/examples/images/create_file.PNG?token=AV5InlbP40217M7uw4_U0vqbpg8WkfP7ks5bbdfrwA%3D%3D "mpg -c 0000ff --print")
 [example.scss](https://github.com/KaindlJulian/material-palette-generator/blob/master/examples/example.scss)
