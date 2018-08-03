@@ -1,4 +1,4 @@
-#material-palette-generator (mpg)
+# material-palette-generator (mpg)
 
 ![NPM](https://img.shields.io/npm/v/material-palette-generator.svg?style=flat-square)
 
