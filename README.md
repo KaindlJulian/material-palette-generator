@@ -1,4 +1,6 @@
-# material-palette-generator (mpg)
+#material-palette-generator (mpg)
+
+![NPM](https://img.shields.io/npm/v/material-palette-generator.svg?style=flat-square)
 
 Node.js cli utility to generate material color palettes. Following the material guidelines at [material.io](https://material.io/design/color/the-color-system.html#)
 
